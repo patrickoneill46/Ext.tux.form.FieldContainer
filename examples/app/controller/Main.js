@@ -7,8 +7,7 @@ Ext.define('Sample.controller.Main',{
     extend: 'Ext.app.Controller',
     config: {
         views: [
-            'Address',
-            'Main'
+            'Address'
         ],
         refs: {
             mainView: 'mainview'

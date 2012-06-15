@@ -13,12 +13,8 @@ Ext.define('Sample.view.Address',{
                 xtype: 'fieldcontainer',
                 label: 'Address',
                 name: 'address',
-                items: [
+                rows: [
                     {
-                        layout: {
-                            type: 'hbox',
-                            align: 'stretch'
-                        },
                         items: [
                             {
                                 xtype: 'textfield',
@@ -37,16 +33,11 @@ Ext.define('Sample.view.Address',{
                         ]
                     },
                     {
-                        layout: {
-                            type: 'hbox',
-                            align: 'stretch'
-                        },
                         items: [
                             {
                                 xtype: 'textfield',
                                 name: 'zip',
-                                placeHolder: 'Zip Code',
-                                flex: 1
+                                placeHolder: 'Zip Code'
                             },
                             {
                                 xtype: 'selectfield',
@@ -55,22 +46,16 @@ Ext.define('Sample.view.Address',{
                                     { text: 'Turin',  value: 'turin' },
                                     { text: 'San Francisco', value: 'sfo' },
                                     { text: 'Rewood City',  value: 'redwood' }
-                                ],
-                                flex: 1
+                                ]
                             }
                         ]
                     },
                     {
-                        layout: {
-                            type: 'hbox',
-                            align: 'stretch'
-                        },
                         items: [
                             {
                                 xtype: 'textfield',
                                 name: 'province',
-                                placeHolder: 'Province',
-                                flex: 1
+                                placeHolder: 'Province'
                             },
                             {
                                 xtype: 'selectfield',
@@ -78,8 +63,7 @@ Ext.define('Sample.view.Address',{
                                 options: [
                                     { text: 'Italy',  value: 'italy' },
                                     { text: 'California', value: 'california' }
-                                ],
-                                flex: 1
+                                ]
                             }
                         ]
                     }

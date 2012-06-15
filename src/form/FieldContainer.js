@@ -1,7 +1,10 @@
 /**
+ * @author Andrea Cammarata
  * @class Ext.tux.form.FieldContainer
  * @extends Ext.field.Field
- * FieldContainer component.
+ * @version 0.2
+ * FieldContainer component which allow to create custom complex
+ * Form Fields grouping them under the same label.
  */
 Ext.define('Ext.tux.form.FieldContainer',{
     extend: 'Ext.field.Field',
@@ -9,12 +12,12 @@ Ext.define('Ext.tux.form.FieldContainer',{
     config: {
     
         /**
-         * @cfg items
-         * The field items that the this component
-         * should contains.
+         * @cfg rows
+         * The field rows used to contains all the fields
+         * this component will display.
          * @accessor
          */
-        items: null,
+        rows: null,
 
         component: {
             xtype: 'container',
@@ -26,25 +29,42 @@ Ext.define('Ext.tux.form.FieldContainer',{
     // @private
     initialize: function(config){
 
-        var items = this.getItems(),
-            cmp = this.getComponent();
-    
-        Ext.each(items, function(item){
-            item.cls = 'x-container-row';
-            cmp.add(Ext.factory(item, Ext.Container));
+        var me = this,
+            rows = me.getRows(),
+            cmp = me.getComponent(),
+            rowConfig = me.getRowConfig();
+
+        //Apply the default row config to every rows
+        Ext.each(rows, function(row){
+	        Ext.apply(row, rowConfig);
+            cmp.add(Ext.factory(row, Ext.Container));
         });
     
-        this.updateFields();
-        this.callParent(arguments);
+        me.initFields();
+        me.callParent(arguments);
 
     },
 
+    //@private
+    getRowConfig: function(){
+	
+	    return {
+	        cls: 'x-container-row',
+	        defaults: { flex: 1 },
+	        layout: {
+                type: 'hbox',
+                align: 'stretch'
+            }
+        };
+	
+    },
+
     // @private
-    updateFields: function(){
+    initFields: function(){
         
         var me = this;
         me.fields = new Ext.util.MixedCollection(true, me.getFieldKey);
-        me.fields.addAll(Ext.ComponentQuery.query('field[name!=""]', this.getComponent()));
+        me.fields.addAll(Ext.ComponentQuery.query('field[name!=""]', me.getComponent()));
     
     },
 

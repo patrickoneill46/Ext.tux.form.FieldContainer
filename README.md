@@ -8,4 +8,4 @@ In order to properly style this component, please replace the original Sencha To
 ##### v. 0.2 - 2012/06/15
 
 - src/form/FieldContainer.js: Renamed the "items" config property to "rows".
-- examples/views/Address.js: Conformed the AddressField component to new plugin configuration. 
+- examples/views/Address.js: Conformed the AddressField example to the new component configuration.
